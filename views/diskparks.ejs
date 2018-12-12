@@ -1,3 +1,5 @@
+<% include partials/header %>
+
 <h1>This is the diskparks page</h1>
 
 <% diskparks.forEach(function(diskparks){ %>
@@ -6,3 +8,5 @@
       <img src="<%= diskparks.image %>" >
       </div>
 <% }); %>
+
+<% include partials/footer %>
