@@ -1,0 +1,11 @@
+<% include partials/header %>
+<h1>Create a New Disk Park</h1>
+
+<form action="/diskparks" method="post">
+  <input type="text" name="name" placeholder="name">
+  <input type="text" name="image" placeholder="image url">
+  <button>Submit</button>
+
+</form>
+<a href="/diskparks">Go Back</a>
+<% include partials/footer %>
