@@ -1,14 +1,28 @@
 <% include partials/header %>
-
-<h1>This is the diskparks page</h1>
-
- <a href="/diskparks/new">Add New DiskPark</a>
-
-<% diskparks.forEach(function(diskparks){ %>
-      <div>
-      <h4><%= diskparks.name %></h4>
-      <img src="<%= diskparks.image %>" >
+    <div class= "container">
+      <header class="jumbotron">
+        <div class="container">
+          <h1>Welcome to DiskPark Selector</h1>
+          <p>Veiw our hand picked diskPArks from all over the world</p>
+          <p>
+            <a class="btn btn-primary btn-lg" href="/diskparks/new">Add New DiskPark</a>
+          </p>
       </div>
-<% }); %>
+    </header>
+
+    <div class="row text-center"  style="display:flex; flex-wrap: wrap;">
+        <h3>Our Most Popular DiskParks!</h3>
+        <% diskparks.forEach(function(diskparks){ %>
+              <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                  <img src="<%= diskparks.image %>" >
+                    <div class="caption">
+                      <h4><%= diskparks.name %></h4>
+                    </div>
+                </div>
+              </div>
+        <% }); %>
+    </div>
+</div>
 
 <% include partials/footer %>
