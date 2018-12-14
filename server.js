@@ -1,23 +1,16 @@
-let express = require("express"),
- app        = express(),
- bodyParser = require("body-parser"),
- mongoose   = require("mongoose")
+let Diskpark   = require("./models/diskparks"),
+    express    = require("express"),
+    bodyParser = require("body-parser"),
+    mongoose   = require("mongoose"),
+    app        = express(),
+    seedDB     = require("./seeds")
 
-mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true });
-
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+seedDB();
+mongoose.connect("mongodb://localhost/disk_yelp_2", { useNewUrlParser: true });
+app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
-// schema setup
-let diskparkSchema = new mongoose.Schema({
-  name: String,
-  image: String,
-  description: String
-});
 
-let Diskpark = mongoose.model("Diskpark", diskparkSchema);
 
 // Diskpark.create(
 //   {
@@ -47,10 +40,15 @@ app.get("/diskparks", function(req, res){
      if(err){
        console.log(err);
      } else {
-       res.render("index", {diskparks:allDiskparks})
+       res.render("index", {diskparks:allDiskparks});
      }
-   })
+   });
 });
+//NEW - show form to create new campground
+app.get("/diskparks/new", function(req, res){
+   res.render("new");
+});
+
 // Create - add new diskparks to DB
 app.post("/diskparks", function(req, res){
   // get data from and add to diskParks array
@@ -68,20 +66,17 @@ app.post("/diskparks", function(req, res){
     }
   });
 });
-//NEW - show form to create new campground
-app.get("/diskparks/new", function(req, res){
-   res.render("new");
-});
+
 
 // SHOW - shows more info about one campground
 app.get("/diskparks/:id", function(req, res){
     //find the campground with provided ID
-    Diskpark.findById(req.params.id, function(err, foundDiskpark){
+    Diskpark.findById(req.params.id, function(err, foundDiskparks){
         if(err){
             console.log(err);
         } else {
             //render show template with that campground
-            res.render("show", {diskpark: foundDiskpark});
+            res.render("show", {diskpark: foundDiskparks});
         }
     });
 })
