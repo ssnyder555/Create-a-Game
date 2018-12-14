@@ -10,25 +10,6 @@ mongoose.connect("mongodb://localhost/disk_yelp_2", { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
-
-
-// Diskpark.create(
-//   {
-//     name: "Circle C Ranch",
-//     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvfrcX26C32NBg1MLYA7751pgnIThivKfSauaMyqJFZjBhIC69HA",
-//     description: "This is a huge Park 18 holes"
-//   },
-//   function(err, diskpark){
-//     if(err){
-//       console.log(err);
-//     } else {
-//       console.log("newly created park");
-//       console.log(diskpark);
-//     }
-//   }
-// )
-
-
 app.get("/", function(req, res){
   res.render("landing");
 });
@@ -44,10 +25,6 @@ app.get("/diskparks", function(req, res){
      }
    });
 });
-//NEW - show form to create new campground
-app.get("/diskparks/new", function(req, res){
-   res.render("new");
-});
 
 // Create - add new diskparks to DB
 app.post("/diskparks", function(req, res){
@@ -56,6 +33,7 @@ app.post("/diskparks", function(req, res){
   let image = req.body.image;
   let desc  = req.body.description;
   let newDiskpark = {name: name, image: image, description: desc}
+
 
   //create a new diskpark save to db
   Diskpark.create(newDiskpark, function(err, newlyCreated){
@@ -67,16 +45,21 @@ app.post("/diskparks", function(req, res){
   });
 });
 
+//NEW - show form to create new campground
+app.get("/diskparks/new", function(req, res){
+   res.render("new");
+});
 
-// SHOW - shows more info about one campground
+// SHOW - shows more info about one park
 app.get("/diskparks/:id", function(req, res){
-    //find the campground with provided ID
-    Diskpark.findById(req.params.id, function(err, foundDiskparks){
+    //find the park with provided ID
+    Diskpark.findById(req.params._id).populate("comments").exec(function(err, foundDiskpark){
         if(err){
             console.log(err);
         } else {
-            //render show template with that campground
-            res.render("show", {diskpark: foundDiskparks});
+            console.log(foundDiskpark)
+            //render show template with that park
+            res.render("show", {diskpark: foundDiskpark});
         }
     });
 })
