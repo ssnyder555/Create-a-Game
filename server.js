@@ -1,10 +1,13 @@
-var express     = require("express"),
-    app         = express(),
-    bodyParser  = require("body-parser"),
-    mongoose    = require("mongoose"),
-    Campground  = require("./models/campground"),
-    Comment     = require("./models/comment"),
-    seedDB      = require("./seeds")
+let express       = require("express"),
+    app           = express(),
+    bodyParser    = require("body-parser"),
+    mongoose      = require("mongoose"),
+    passport      = require("passport"),
+    LocalStrategy = require("passport-local"),
+    Campground    = require("./models/campground"),
+    Comment       = require("./models/comment"),
+    User          = require("./models/user"),
+    seedDB        = require("./seeds")
 
 mongoose.connect("mongodb://localhost/yelp_camp_v3");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -31,10 +34,10 @@ app.get("/campgrounds", function(req, res){
 //CREATE - add new campground to DB
 app.post("/campgrounds", function(req, res){
     // get data from form and add to campgrounds array
-    var name = req.body.name;
-    var image = req.body.image;
-    var desc = req.body.description;
-    var newCampground = {name: name, image: image, description: desc}
+    let name = req.body.name;
+    let image = req.body.image;
+    let desc = req.body.description;
+    let newCampground = {name: name, image: image, description: desc}
     // Create a new campground and save to DB
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
