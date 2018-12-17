@@ -1,14 +1,13 @@
-<h1>show page</h1>
 <% include partials/header %>
-<h1><%=diskpark.name%></h1>
+<h1><%=campground.name%></h1>
 
-<img src="<%= diskpark.image %>">
+<img src="<%= campground.image %>">
 
-<p><%= diskpark.description %></p>
+<p><%= campground.description %></p>
 
-<% diskpark.comments.forEach(function(comment){ %>
-    <p>
-        <strong><%= comment.author %></strong> - <%= comment.text %>
-    </p>
+<% campground.comments.forEach(function(comment){ %>
+  <p>
+    <strong><%= comment.author %></strong> - <%= comment.text %>
+  </p>
 <% }) %>
 <% include partials/footer %>

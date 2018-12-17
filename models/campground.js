@@ -1,6 +1,6 @@
-let mongoose = require("mongoose");
+var mongoose = require("mongoose");
 
-let diskparkSchema = new mongoose.Schema({
+var campgroundSchema = new mongoose.Schema({
    name: String,
    image: String,
    description: String,
@@ -12,4 +12,4 @@ let diskparkSchema = new mongoose.Schema({
    ]
 });
 
-module.exports = mongoose.model("Diskpark", diskparkSchema);
+module.exports = mongoose.model("Campground", campgroundSchema);
