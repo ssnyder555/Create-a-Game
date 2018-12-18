@@ -21,7 +21,7 @@ router.post("/register", function(req, res){
     const newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, function(err, user){
         if(err){
-          req.flash("error", err);
+          req.flash("error", err.message);
             console.log(err);
             return res.render("register");
         }
