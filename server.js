@@ -1,13 +1,14 @@
-let express     = require("express"),
-    app         = express(),
-    bodyParser  = require("body-parser"),
-    mongoose    = require("mongoose"),
-    passport    = require("passport"),
-    LocalStrategy = require("passport-local"),
-    Campground  = require("./models/campground"),
-    Comment     = require("./models/comment"),
-    User        = require("./models/user"),
-    seedDB      = require("./seeds")
+let express        = require("express"),
+    app            = express(),
+    bodyParser     = require("body-parser"),
+    mongoose       = require("mongoose"),
+    passport       = require("passport"),
+    LocalStrategy  = require("passport-local"),
+    methodOverride = require("method-override"),
+    Campground     = require("./models/campground"),
+    Comment        = require("./models/comment"),
+    User           = require("./models/user"),
+    seedDB         = require("./seeds")
 
 
 // requiring the routes
@@ -15,11 +16,12 @@ let commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     authRoutes       = require("./routes/auth")
 
-mongoose.connect("mongodb://localhost/disk_camp2",  { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/disk_camp3",  { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-// seed the database 
+app.use(methodOverride("_method"));
+// seed the database
 // seedDB();
 
 // PASSPORT CONFIGURATION
