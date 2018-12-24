@@ -10,6 +10,7 @@ let express        = require("express"),
     Campground     = require("./models/campground"),
     Comment        = require("./models/comment"),
     User           = require("./models/user"),
+    PORT           = process.env.PORT || 3000,
     seedDB         = require("./seeds")
 
 
@@ -24,6 +25,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
+
 // seed the database
 // seedDB();
 
@@ -51,6 +53,7 @@ app.use("/", authRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
-app.listen(3000, function(){
-  console.log("server started");
+// The whole thing listens through here:
+app.listen(PORT, () => {
+  console.log('Server listening on port ' + PORT);
 });
