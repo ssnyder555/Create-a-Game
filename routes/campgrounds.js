@@ -1,7 +1,8 @@
-let express    = require("express");
-let router     = express.Router();
+let express = require("express");
+let router  = express.Router();
 let Campground = require("../models/campground");
 let middleware = require("../middleware");
+
 
 
 //INDEX - show all campgrounds
@@ -38,6 +39,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         }
     });
 });
+
 
 //NEW - show form to create new campground
 router.get("/new", middleware.isLoggedIn, function(req, res){
@@ -88,5 +90,6 @@ router.delete("/:id",middleware.checkCampgroundOwnership, function(req, res){
       }
    });
 });
+
 
 module.exports = router;

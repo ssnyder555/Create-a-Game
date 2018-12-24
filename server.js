@@ -1,3 +1,4 @@
+require("dotenv").config();
 let express        = require("express"),
     app            = express(),
     flash          = require("connect-flash"),
@@ -51,5 +52,5 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
 app.listen(3000, function(){
-  console.log("disk server is started");
+  console.log("server started");
 });

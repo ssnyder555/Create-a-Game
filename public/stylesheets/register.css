@@ -1,0 +1,9 @@
+body {
+  background-color: steelblue;
+}
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 5vh;
+}
