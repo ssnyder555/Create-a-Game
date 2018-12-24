@@ -13,13 +13,15 @@ let express        = require("express"),
     PORT           = process.env.PORT || 3000,
     seedDB         = require("./seeds")
 
+    require('./db/db');
 
 // requiring the routes
 const commentRoutes    = require("./routes/comments"),
       campgroundRoutes = require("./routes/campgrounds"),
       authRoutes       = require("./routes/auth")
 
-mongoose.connect("mongodb://localhost/disk_camp3",  { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/disk_camp3",  { useNewUrlParser: true });
+// mongodb://steve:1password@ds243254.mlab.com:43254/disk-db"
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
