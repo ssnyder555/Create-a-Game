@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoDbUrl = process.env.MONGODB_URI || 'mongodb://localhost/disk_camp3';
+const mongoDbUrl = process.env.MONGODB_URI || 'mongodb://localhost/disk_camp5';
 
 const connectionString = "mongodb://localhost/disk_camp3";
 

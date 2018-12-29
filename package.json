@@ -22,6 +22,7 @@
     "express-session": "^1.15.6",
     "geocoder": "^0.2.3",
     "method-override": "^3.0.0",
+    "moment": "^2.23.0",
     "mongoose": "^5.3.16",
     "node-geocoder": "^3.22.0",
     "passport": "^0.4.0",
