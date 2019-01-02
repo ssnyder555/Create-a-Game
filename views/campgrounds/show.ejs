@@ -12,7 +12,10 @@
           $<%= campground.cost %>/night
         </p>
         <h5 class="card-title"><%= campground.name %></h5>
-      
+        <p>
+         <em>Submitted by: <%= campground.author.username %>,</em>
+        </p>
+
         <hr>
         <p class="card-text"><%= campground.description %></p>
         <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
@@ -39,8 +42,9 @@
                   <p class="card-text"><%= comment.text %></p>
                 </div>
                 <div class="float-right">
-                  <p><%= moment(comment.createdAt).fromNow() %></p>
-
+                  <p>
+                    <%= comment.text %>
+                   </p>
                   <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
                   <div class="float-right">
                     <a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit" class="btn btn-sm btn-warning">EDIT</a>
