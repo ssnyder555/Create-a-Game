@@ -45,23 +45,23 @@ h1 {
 }
 
 .slideshow li:nth-child(1) {
-  background-image: img/ss.png;
+  background-image: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-730657.jpg)
 }
 .slideshow li:nth-child(2) {
-  background-image: url(http://i.imgur.com/SBEmFpv.jpg);
-  animation-delay: 10s;
+  background-image: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-730659.jpg);
+  animation-delay: 5s;
 }
 .slideshow li:nth-child(3) {
-  background-image: url(http://i.imgur.com/emvhOnb.jpg);
-  animation-delay: 20s;
+  background-image: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-730660.jpg);
+  animation-delay: 10s;
 }
 .slideshow li:nth-child(4) {
-  background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
-  animation-delay: 30s;
+  background-image: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-730661.jpg);
+  animation-delay: 15s;
 }
 .slideshow li:nth-child(5) {
-  background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
-  animation-delay: 40s;
+  background-image: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-730658.jpg);
+  animation-delay: 20s;
 }
 
 @keyframes imageAnimation {
