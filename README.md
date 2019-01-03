@@ -32,9 +32,9 @@
 
 ## Example Routes
 - /Auth
-- /Comments 
+- /Comments
 
-![alt text](/img/landing.png);
-![alt text](/img/login.png);
-![alt text](/img/home.png);
-![alt text](/img/show.png);
+![alt text](/img/landing.png)
+![alt text](/img/login.png)
+![alt text](/img/home.png)
+![alt text](/img/show.png)
